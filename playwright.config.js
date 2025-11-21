@@ -1,4 +1,5 @@
 // @ts-check
+// @ts-ignore
 const { defineConfig, devices, firefox } = require('@playwright/test');
 
 module.exports = defineConfig({
@@ -21,7 +22,7 @@ module.exports = defineConfig({
   use: {
     baseURL: 'https://bms-cartrems-sit.pegacloud.net', // Replace with your AUT URL
     //browserName: 'chromium',
-    headless: false,
+    headless: true,
     trace: 'off', // Capture trace only on first retry
     screenshot: 'on',
     video: 'retain-on-failure',
