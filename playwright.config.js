@@ -10,11 +10,11 @@ module.exports = defineConfig({
   expect: {
     timeout: 5000, // Timeout for expect() conditions
   },
-  fullyParallel: true, // Run tests in parallel
+  fullyParallel: false, // Run tests in parallel
   forbidOnly: !!process.env.CI, // Fail if test.only is left in code
   retries: process.env.CI ? 1 : 0, // Retry failed tests in CI
   //workers: process.env.CI ? 1 : undefined, // Number of workers
-  workers:6,
+  workers:1,
   reporter: [ // Console output
     ['html']
   ],
@@ -22,7 +22,8 @@ module.exports = defineConfig({
   use: {
     baseURL: 'https://bms-cartrems-sit.pegacloud.net', // Replace with your AUT URL
     //browserName: 'chromium',
-    headless: true,
+    headless: false,
+    browserName: 'chromium',
     trace: 'off', // Capture trace only on first retry
     screenshot: 'on',
     video: 'retain-on-failure',
@@ -34,21 +35,12 @@ module.exports = defineConfig({
   /* Configure projects for major browsers */
   //grep:[new RegExp('@Smoke|@Regression')],
   
-projects:[
-
-{
-  name:'mobile chrome',
- use:{
-  ...devices['iPhone 15 Pro Max landscape'],
-
- }
-}
 
 
 
 
-]
-,
+
+
 
 /* Folder for test artifacts like screenshots, videos, traces, etc. */
   outputDir: 'test-results/',
